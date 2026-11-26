@@ -17,11 +17,8 @@ public sealed class IconCatalogPageViewModel : ReactiveObject, IRoutableViewMode
 {
     private static readonly IconThemeType[] Themes =
     [
-        IconThemeType.Filled,
         IconThemeType.Outlined,
-        IconThemeType.Rounded,
-        IconThemeType.Sharp,
-        IconThemeType.TwoTone
+        IconThemeType.Filled
     ];
 
     private readonly CompositeDisposable _subscriptions = new();

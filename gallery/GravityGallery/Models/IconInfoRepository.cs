@@ -15,7 +15,7 @@ public partial class IconInfoRepository : AvaloniaObject, IDisposable
         AvaloniaProperty.Register<IconInfoRepository, string?>(nameof (Category), "Arrows");
     
     public static readonly StyledProperty<IconThemeType> IconThemeProperty = 
-        AvaloniaProperty.Register<IconInfoRepository, IconThemeType>(nameof (IconTheme));
+        AvaloniaProperty.Register<IconInfoRepository, IconThemeType>(nameof (IconTheme), IconThemeType.Outlined);
     
     public static readonly StyledProperty<IEnumerable<IconInfo>?> ActivatedIconInfosProperty = 
         AvaloniaProperty.Register<IconInfoRepository, IEnumerable<IconInfo>?>(nameof (ActivatedIconInfos));

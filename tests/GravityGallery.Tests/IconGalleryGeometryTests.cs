@@ -38,7 +38,7 @@ public class IconGalleryGeometryTests
         {
             window.Show();
             Dispatcher.UIThread.RunJobs();
-            workspace.CaseNavigation.NavigateToCommand.Execute("Action").Subscribe();
+            workspace.CaseNavigation.NavigateToCommand.Execute("Arrows").Subscribe();
             Dispatcher.UIThread.RunJobs();
             workspace.Router.NavigationStack.Count.ShouldBe(1);
             workspace.Router.NavigationStack[0].ShouldBeOfType<IconCatalogPageViewModel>();

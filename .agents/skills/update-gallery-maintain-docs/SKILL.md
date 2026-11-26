@@ -1,3 +1,8 @@
+---
+name: update-gallery-maintain-docs
+description: 根据 Gallery 项目的代码修改同步更新 docs/Maintain/AtomUIGallery 下的维护文档。当 Gallery 项目完成重要代码升级、架构调整或重构（例如 ReactiveUI 版本升级、API 变更）后需要更新维护文档时使用。
+---
+
 # SKILL: 根据代码修改同步 Gallery 文档
 
 ## 名称

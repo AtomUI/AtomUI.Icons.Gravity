@@ -8,27 +8,31 @@ namespace GravityGallery.Features.Overview
 {
     partial class OverviewPage
     {
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::Avalonia.Controls.Image OverviewBanner;
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
+        internal global::AtomUI.Desktop.Controls.Alert UpstreamAcknowledgementAlert;
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
+        internal global::AtomUI.Desktop.Controls.HyperLinkButton GravityIconsUpstreamLink;
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::AtomUI.Desktop.Controls.Tag DotNet8Tag;
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::AtomUI.Desktop.Controls.Tag DotNet10Tag;
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::AtomUI.Desktop.Controls.TabControl InstallTabs;
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::AtomUI.Desktop.Controls.Button DotNetCliCopyButton;
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::AtomUI.Desktop.Controls.Button PackageReferenceCopyButton;
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::AtomUI.Desktop.Controls.Button PackageManagerCopyButton;
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::AtomUI.Desktop.Controls.HyperLinkButton BrowseIconsLink;
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::AtomUI.Desktop.Controls.HyperLinkButton UsageLink;
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::AtomUI.Desktop.Controls.HyperLinkButton NuGetLink;
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         internal global::AtomUI.Desktop.Controls.HyperLinkButton GitHubLink;
 
         /// <summary>
@@ -36,7 +40,7 @@ namespace GravityGallery.Features.Overview
         /// </summary>
         /// <param name="loadXaml">Should the XAML be loaded into the component.</param>
 
-        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.1.6.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Avalonia.Generators.NameGenerator.InitializeComponentCodeGenerator", "12.2.0.0")]
         [global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
         public void InitializeComponent(bool loadXaml = true)
         {
@@ -47,6 +51,8 @@ namespace GravityGallery.Features.Overview
 
             var __thisNameScope__ = this.FindNameScope();
             OverviewBanner = __thisNameScope__?.Find<global::Avalonia.Controls.Image>("OverviewBanner");
+            UpstreamAcknowledgementAlert = __thisNameScope__?.Find<global::AtomUI.Desktop.Controls.Alert>("UpstreamAcknowledgementAlert");
+            GravityIconsUpstreamLink = __thisNameScope__?.Find<global::AtomUI.Desktop.Controls.HyperLinkButton>("GravityIconsUpstreamLink");
             DotNet8Tag = __thisNameScope__?.Find<global::AtomUI.Desktop.Controls.Tag>("DotNet8Tag");
             DotNet10Tag = __thisNameScope__?.Find<global::AtomUI.Desktop.Controls.Tag>("DotNet10Tag");
             InstallTabs = __thisNameScope__?.Find<global::AtomUI.Desktop.Controls.TabControl>("InstallTabs");

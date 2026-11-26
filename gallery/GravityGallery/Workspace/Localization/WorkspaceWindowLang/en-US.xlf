@@ -71,6 +71,131 @@
         <source>Enable WaveSpirit</source>
       </segment>
     </unit>
+    <unit id="MenuItemAppearance">
+      <segment>
+        <source>Appearance</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemLightMode">
+      <segment>
+        <source>Light Mode</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemFollowSystem">
+      <segment>
+        <source>Follow System</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemDesignLanguage">
+      <segment>
+        <source>Design Language</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemBrandColor">
+      <segment>
+        <source>Brand Color</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemBrandColorReset">
+      <segment>
+        <source>Reset Brand Color</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemBrandColorFixedHint">
+      <segment>
+        <source>This design language uses a fixed brand color</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemBrandColorNoLanguageHint">
+      <segment>
+        <source>This theme declares no design language, so its brand color cannot be changed</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemNeutralColor">
+      <segment>
+        <source>Neutral Color</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemNeutralColorReset">
+      <segment>
+        <source>Reset Neutral Color</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemNeutralColorFixedHint">
+      <segment>
+        <source>The current design language does not accept a neutral color</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemNeutralColorNoLanguageHint">
+      <segment>
+        <source>The current theme belongs to no design language</source>
+      </segment>
+    </unit>
+    <unit id="MenuItemOtherThemes">
+      <segment>
+        <source>Other Themes</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageAntDesign">
+      <segment>
+        <source>Ant Design</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguagePrimeNGAura">
+      <segment>
+        <source>Aura</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguagePrimeNGLara">
+      <segment>
+        <source>Lara</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguagePrimeNGNora">
+      <segment>
+        <source>Nora</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnVega">
+      <segment>
+        <source>Vega</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnNova">
+      <segment>
+        <source>Nova</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnMaia">
+      <segment>
+        <source>Maia</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnLyra">
+      <segment>
+        <source>Lyra</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnMira">
+      <segment>
+        <source>Mira</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnLuma">
+      <segment>
+        <source>Luma</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnSera">
+      <segment>
+        <source>Sera</source>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnRhea">
+      <segment>
+        <source>Rhea</source>
+      </segment>
+    </unit>
     <unit id="NavigationIconThemeOutlined">
       <segment>
         <source>Outlined</source>
@@ -79,21 +204,6 @@
     <unit id="NavigationIconThemeFilled">
       <segment>
         <source>Filled</source>
-      </segment>
-    </unit>
-    <unit id="NavigationIconThemeRounded">
-      <segment>
-        <source>Rounded</source>
-      </segment>
-    </unit>
-    <unit id="NavigationIconThemeSharp">
-      <segment>
-        <source>Sharp</source>
-      </segment>
-    </unit>
-    <unit id="NavigationIconThemeTwoTone">
-      <segment>
-        <source>Two tone</source>
       </segment>
     </unit>
     <unit id="NavigationCategoryLabel">
@@ -126,34 +236,39 @@
         <source>Expand navigation</source>
       </segment>
     </unit>
-    <unit id="IconCategoryAction">
+    <unit id="IconCategoryArrows">
       <segment>
-        <source>Action</source>
+        <source>Arrows</source>
       </segment>
     </unit>
-    <unit id="IconCategoryAlert">
+    <unit id="IconCategoryLayout">
       <segment>
-        <source>Alert</source>
+        <source>Layout</source>
       </segment>
     </unit>
-    <unit id="IconCategoryAv">
+    <unit id="IconCategoryText">
       <segment>
-        <source>Av</source>
+        <source>Text</source>
       </segment>
     </unit>
-    <unit id="IconCategoryCommunication">
+    <unit id="IconCategoryStatus">
       <segment>
-        <source>Communication</source>
+        <source>Status</source>
       </segment>
     </unit>
-    <unit id="IconCategoryContent">
+    <unit id="IconCategoryFiles">
       <segment>
-        <source>Content</source>
+        <source>Files</source>
       </segment>
     </unit>
-    <unit id="IconCategoryDevice">
+    <unit id="IconCategoryShapes">
       <segment>
-        <source>Device</source>
+        <source>Shapes</source>
+      </segment>
+    </unit>
+    <unit id="IconCategoryDevelopment">
+      <segment>
+        <source>Development</source>
       </segment>
     </unit>
     <unit id="IconCategoryEditor">
@@ -161,24 +276,44 @@
         <source>Editor</source>
       </segment>
     </unit>
-    <unit id="IconCategoryFile">
+    <unit id="IconCategoryPeople">
       <segment>
-        <source>File</source>
+        <source>People</source>
       </segment>
     </unit>
-    <unit id="IconCategoryHardware">
+    <unit id="IconCategoryMedia">
       <segment>
-        <source>Hardware</source>
+        <source>Media</source>
       </segment>
     </unit>
-    <unit id="IconCategoryHome">
+    <unit id="IconCategoryBrands">
       <segment>
-        <source>Home</source>
+        <source>Brands</source>
       </segment>
     </unit>
-    <unit id="IconCategoryImage">
+    <unit id="IconCategoryCharts">
       <segment>
-        <source>Image</source>
+        <source>Charts</source>
+      </segment>
+    </unit>
+    <unit id="IconCategoryCommerce">
+      <segment>
+        <source>Commerce</source>
+      </segment>
+    </unit>
+    <unit id="IconCategoryCommunication">
+      <segment>
+        <source>Communication</source>
+      </segment>
+    </unit>
+    <unit id="IconCategoryGames">
+      <segment>
+        <source>Games</source>
+      </segment>
+    </unit>
+    <unit id="IconCategoryDevices">
+      <segment>
+        <source>Devices</source>
       </segment>
     </unit>
     <unit id="IconCategoryMaps">
@@ -186,34 +321,59 @@
         <source>Maps</source>
       </segment>
     </unit>
-    <unit id="IconCategoryNavigation">
+    <unit id="IconCategoryTools">
       <segment>
-        <source>Navigation</source>
+        <source>Tools</source>
       </segment>
     </unit>
-    <unit id="IconCategoryNotification">
+    <unit id="IconCategoryMath">
       <segment>
-        <source>Notification</source>
+        <source>Math</source>
       </segment>
     </unit>
-    <unit id="IconCategoryPlaces">
+    <unit id="IconCategorySecurity">
       <segment>
-        <source>Places</source>
+        <source>Security</source>
       </segment>
     </unit>
-    <unit id="IconCategorySearch">
+    <unit id="IconCategoryCloud">
       <segment>
-        <source>Search</source>
+        <source>Cloud</source>
       </segment>
     </unit>
-    <unit id="IconCategorySocial">
+    <unit id="IconCategoryFinance">
       <segment>
-        <source>Social</source>
+        <source>Finance</source>
       </segment>
     </unit>
-    <unit id="IconCategoryToggle">
+    <unit id="IconCategoryHealth">
       <segment>
-        <source>Toggle</source>
+        <source>Health</source>
+      </segment>
+    </unit>
+    <unit id="IconCategoryTransport">
+      <segment>
+        <source>Transport</source>
+      </segment>
+    </unit>
+    <unit id="IconCategoryWeather">
+      <segment>
+        <source>Weather</source>
+      </segment>
+    </unit>
+    <unit id="IconCategoryTime">
+      <segment>
+        <source>Time</source>
+      </segment>
+    </unit>
+    <unit id="IconCategoryFood">
+      <segment>
+        <source>Food</source>
+      </segment>
+    </unit>
+    <unit id="IconCategoryUnassigned">
+      <segment>
+        <source>Unassigned</source>
       </segment>
     </unit>
   </file>

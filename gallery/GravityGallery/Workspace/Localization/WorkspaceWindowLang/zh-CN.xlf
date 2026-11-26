@@ -85,6 +85,156 @@
         <target state="translated">开启波浪动画</target>
       </segment>
     </unit>
+    <unit id="MenuItemAppearance">
+      <segment>
+        <source>Appearance</source>
+        <target state="translated">外观模式</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemLightMode">
+      <segment>
+        <source>Light Mode</source>
+        <target state="translated">明亮模式</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemFollowSystem">
+      <segment>
+        <source>Follow System</source>
+        <target state="translated">跟随系统</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemDesignLanguage">
+      <segment>
+        <source>Design Language</source>
+        <target state="translated">设计语言</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemBrandColor">
+      <segment>
+        <source>Brand Color</source>
+        <target state="translated">品牌色</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemBrandColorReset">
+      <segment>
+        <source>Reset Brand Color</source>
+        <target state="translated">重置品牌色</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemBrandColorFixedHint">
+      <segment>
+        <source>This design language uses a fixed brand color</source>
+        <target state="translated">此设计语言使用固定品牌色</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemBrandColorNoLanguageHint">
+      <segment>
+        <source>This theme declares no design language, so its brand color cannot be changed</source>
+        <target state="translated">此主题未声明设计语言，无法更换品牌色</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemNeutralColor">
+      <segment>
+        <source>Neutral Color</source>
+        <target state="translated">中性色</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemNeutralColorReset">
+      <segment>
+        <source>Reset Neutral Color</source>
+        <target state="translated">重置中性色</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemNeutralColorFixedHint">
+      <segment>
+        <source>The current design language does not accept a neutral color</source>
+        <target state="translated">当前设计语言不支持中性色</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemNeutralColorNoLanguageHint">
+      <segment>
+        <source>The current theme belongs to no design language</source>
+        <target state="translated">当前主题不属于任何设计语言</target>
+      </segment>
+    </unit>
+    <unit id="MenuItemOtherThemes">
+      <segment>
+        <source>Other Themes</source>
+        <target state="translated">其他主题</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageAntDesign">
+      <segment>
+        <source>Ant Design</source>
+        <target state="translated">Ant Design</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguagePrimeNGAura">
+      <segment>
+        <source>Aura</source>
+        <target state="translated">Aura</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguagePrimeNGLara">
+      <segment>
+        <source>Lara</source>
+        <target state="translated">Lara</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguagePrimeNGNora">
+      <segment>
+        <source>Nora</source>
+        <target state="translated">Nora</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnVega">
+      <segment>
+        <source>Vega</source>
+        <target state="translated">Vega</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnNova">
+      <segment>
+        <source>Nova</source>
+        <target state="translated">Nova</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnMaia">
+      <segment>
+        <source>Maia</source>
+        <target state="translated">Maia</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnLyra">
+      <segment>
+        <source>Lyra</source>
+        <target state="translated">Lyra</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnMira">
+      <segment>
+        <source>Mira</source>
+        <target state="translated">Mira</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnLuma">
+      <segment>
+        <source>Luma</source>
+        <target state="translated">Luma</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnSera">
+      <segment>
+        <source>Sera</source>
+        <target state="translated">Sera</target>
+      </segment>
+    </unit>
+    <unit id="DesignLanguageShadcnRhea">
+      <segment>
+        <source>Rhea</source>
+        <target state="translated">Rhea</target>
+      </segment>
+    </unit>
     <unit id="NavigationIconThemeOutlined">
       <segment>
         <source>Outlined</source>
@@ -95,24 +245,6 @@
       <segment>
         <source>Filled</source>
         <target state="translated">填充</target>
-      </segment>
-    </unit>
-    <unit id="NavigationIconThemeRounded">
-      <segment>
-        <source>Rounded</source>
-        <target state="translated">圆角</target>
-      </segment>
-    </unit>
-    <unit id="NavigationIconThemeSharp">
-      <segment>
-        <source>Sharp</source>
-        <target state="translated">锐角</target>
-      </segment>
-    </unit>
-    <unit id="NavigationIconThemeTwoTone">
-      <segment>
-        <source>Two tone</source>
-        <target state="translated">双色</target>
       </segment>
     </unit>
     <unit id="NavigationCategoryLabel">
@@ -151,40 +283,46 @@
         <target state="translated">展开导航</target>
       </segment>
     </unit>
-    <unit id="IconCategoryAction">
+    <unit id="IconCategoryArrows">
       <segment>
-        <source>Action</source>
-        <target state="translated">操作</target>
+        <source>Arrows</source>
+        <target state="translated">箭头</target>
       </segment>
     </unit>
-    <unit id="IconCategoryAlert">
+    <unit id="IconCategoryLayout">
       <segment>
-        <source>Alert</source>
-        <target state="translated">警告</target>
+        <source>Layout</source>
+        <target state="translated">布局</target>
       </segment>
     </unit>
-    <unit id="IconCategoryAv">
+    <unit id="IconCategoryText">
       <segment>
-        <source>Av</source>
-        <target state="translated">音视频</target>
+        <source>Text</source>
+        <target state="translated">文本</target>
       </segment>
     </unit>
-    <unit id="IconCategoryCommunication">
+    <unit id="IconCategoryStatus">
       <segment>
-        <source>Communication</source>
-        <target state="translated">通信</target>
+        <source>Status</source>
+        <target state="translated">状态</target>
       </segment>
     </unit>
-    <unit id="IconCategoryContent">
+    <unit id="IconCategoryFiles">
       <segment>
-        <source>Content</source>
-        <target state="translated">内容</target>
+        <source>Files</source>
+        <target state="translated">文件</target>
       </segment>
     </unit>
-    <unit id="IconCategoryDevice">
+    <unit id="IconCategoryShapes">
       <segment>
-        <source>Device</source>
-        <target state="translated">设备</target>
+        <source>Shapes</source>
+        <target state="translated">形状</target>
+      </segment>
+    </unit>
+    <unit id="IconCategoryDevelopment">
+      <segment>
+        <source>Development</source>
+        <target state="translated">开发</target>
       </segment>
     </unit>
     <unit id="IconCategoryEditor">
@@ -193,28 +331,52 @@
         <target state="translated">编辑器</target>
       </segment>
     </unit>
-    <unit id="IconCategoryFile">
+    <unit id="IconCategoryPeople">
       <segment>
-        <source>File</source>
-        <target state="translated">文件</target>
+        <source>People</source>
+        <target state="translated">人物</target>
       </segment>
     </unit>
-    <unit id="IconCategoryHardware">
+    <unit id="IconCategoryMedia">
       <segment>
-        <source>Hardware</source>
-        <target state="translated">硬件</target>
+        <source>Media</source>
+        <target state="translated">媒体</target>
       </segment>
     </unit>
-    <unit id="IconCategoryHome">
+    <unit id="IconCategoryBrands">
       <segment>
-        <source>Home</source>
-        <target state="translated">主页</target>
+        <source>Brands</source>
+        <target state="translated">品牌</target>
       </segment>
     </unit>
-    <unit id="IconCategoryImage">
+    <unit id="IconCategoryCharts">
       <segment>
-        <source>Image</source>
-        <target state="translated">图像</target>
+        <source>Charts</source>
+        <target state="translated">图表</target>
+      </segment>
+    </unit>
+    <unit id="IconCategoryCommerce">
+      <segment>
+        <source>Commerce</source>
+        <target state="translated">商业</target>
+      </segment>
+    </unit>
+    <unit id="IconCategoryCommunication">
+      <segment>
+        <source>Communication</source>
+        <target state="translated">通信</target>
+      </segment>
+    </unit>
+    <unit id="IconCategoryGames">
+      <segment>
+        <source>Games</source>
+        <target state="translated">游戏</target>
+      </segment>
+    </unit>
+    <unit id="IconCategoryDevices">
+      <segment>
+        <source>Devices</source>
+        <target state="translated">设备</target>
       </segment>
     </unit>
     <unit id="IconCategoryMaps">
@@ -223,40 +385,70 @@
         <target state="translated">地图</target>
       </segment>
     </unit>
-    <unit id="IconCategoryNavigation">
+    <unit id="IconCategoryTools">
       <segment>
-        <source>Navigation</source>
-        <target state="translated">导航</target>
+        <source>Tools</source>
+        <target state="translated">工具</target>
       </segment>
     </unit>
-    <unit id="IconCategoryNotification">
+    <unit id="IconCategoryMath">
       <segment>
-        <source>Notification</source>
-        <target state="translated">通知</target>
+        <source>Math</source>
+        <target state="translated">数学</target>
       </segment>
     </unit>
-    <unit id="IconCategoryPlaces">
+    <unit id="IconCategorySecurity">
       <segment>
-        <source>Places</source>
-        <target state="translated">地点</target>
+        <source>Security</source>
+        <target state="translated">安全</target>
       </segment>
     </unit>
-    <unit id="IconCategorySearch">
+    <unit id="IconCategoryCloud">
       <segment>
-        <source>Search</source>
-        <target state="translated">搜索</target>
+        <source>Cloud</source>
+        <target state="translated">云</target>
       </segment>
     </unit>
-    <unit id="IconCategorySocial">
+    <unit id="IconCategoryFinance">
       <segment>
-        <source>Social</source>
-        <target state="translated">社交</target>
+        <source>Finance</source>
+        <target state="translated">金融</target>
       </segment>
     </unit>
-    <unit id="IconCategoryToggle">
+    <unit id="IconCategoryHealth">
       <segment>
-        <source>Toggle</source>
-        <target state="translated">开关</target>
+        <source>Health</source>
+        <target state="translated">健康</target>
+      </segment>
+    </unit>
+    <unit id="IconCategoryTransport">
+      <segment>
+        <source>Transport</source>
+        <target state="translated">交通</target>
+      </segment>
+    </unit>
+    <unit id="IconCategoryWeather">
+      <segment>
+        <source>Weather</source>
+        <target state="translated">天气</target>
+      </segment>
+    </unit>
+    <unit id="IconCategoryTime">
+      <segment>
+        <source>Time</source>
+        <target state="translated">时间</target>
+      </segment>
+    </unit>
+    <unit id="IconCategoryFood">
+      <segment>
+        <source>Food</source>
+        <target state="translated">食物</target>
+      </segment>
+    </unit>
+    <unit id="IconCategoryUnassigned">
+      <segment>
+        <source>Unassigned</source>
+        <target state="translated">未分类</target>
       </segment>
     </unit>
   </file>

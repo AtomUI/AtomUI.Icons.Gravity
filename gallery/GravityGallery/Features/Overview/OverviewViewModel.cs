@@ -32,6 +32,8 @@ public sealed class OverviewViewModel : ReactiveObject, IRoutableViewModel
 
     public Uri GitHubUri { get; } = new(GalleryProjectLinks.GitHub);
 
+    public Uri GravityIconsUpstreamUri { get; } = new(GalleryProjectLinks.GravityIconsUpstream);
+
     public OverviewViewModel(IScreen screen)
     {
         HostScreen = screen ?? throw new ArgumentNullException(nameof(screen));

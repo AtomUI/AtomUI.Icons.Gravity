@@ -6,6 +6,7 @@ using GravityGallery.Features.Overview;
 using GravityGallery.Models;
 using ReactiveUI;
 using DesktopButton = AtomUI.Desktop.Controls.Button;
+using DesktopAlert = AtomUI.Desktop.Controls.Alert;
 using DesktopHyperLinkButton = AtomUI.Desktop.Controls.HyperLinkButton;
 using DesktopTag = AtomUI.Desktop.Controls.Tag;
 using DesktopTabControl = AtomUI.Desktop.Controls.TabControl;
@@ -40,6 +41,9 @@ public class OverviewPageTests
         using var host = Show(page);
 
         page.FindControl<Image>("OverviewBanner")!.Source.ShouldNotBeNull();
+        page.FindControl<DesktopAlert>("UpstreamAcknowledgementAlert").ShouldNotBeNull();
+        page.FindControl<DesktopHyperLinkButton>("GravityIconsUpstreamLink")!.NavigateUri!.AbsoluteUri
+            .ShouldBe(GalleryProjectLinks.GravityIconsUpstream);
         AssetLoader.Exists(new Uri("avares://GravityGallery/Assets/atomui-gravity-icons-banner.webp"))
                    .ShouldBeTrue();
         AssetLoader.Exists(new Uri("avares://GravityGallery/Assets/atomui-gravity-icons-banner.png"))

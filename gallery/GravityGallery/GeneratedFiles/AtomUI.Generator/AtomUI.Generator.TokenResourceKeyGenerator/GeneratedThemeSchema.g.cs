@@ -22,9 +22,10 @@ internal static class GeneratedThemeSchemaDescriptorFactory
                 ControlTokenIdentity.ForControl(typeof(global::GravityGallery.Controls.IconGallery), "GravityGallery", "IconGallery"),
                 new TokenDescriptor[]
                 {
-                    TokenDescriptor.CreateGenerated("GalleryIconSize", 0, TokenStage.Control, TokenValueCodec<global::System.Double>.Instance, global::GravityGallery.Controls.DesignTokens.IconGalleryTokenKind.GalleryIconSize, GeneratedTokenAccessor_IconGallery_EA31BC5814CFC1C8.Instance, 1),
-                    TokenDescriptor.CreateGenerated("InfoItemSize", 1, TokenStage.Control, TokenValueCodec<global::System.Double>.Instance, global::GravityGallery.Controls.DesignTokens.IconGalleryTokenKind.InfoItemSize, GeneratedTokenAccessor_IconGallery_EA31BC5814CFC1C8.Instance, 1),
-                    TokenDescriptor.CreateGenerated("SearchInputMargin", 2, TokenStage.Control, TokenValueCodec<global::Avalonia.Thickness>.Instance, global::GravityGallery.Controls.DesignTokens.IconGalleryTokenKind.SearchInputMargin, GeneratedTokenAccessor_IconGallery_EA31BC5814CFC1C8.Instance, 1),
+                    TokenDescriptor.CreateGenerated("EmptyTitleFontSize", 0, TokenStage.Control, TokenValueCodec<global::System.Double>.Instance, global::GravityGallery.Controls.DesignTokens.IconGalleryTokenKind.EmptyTitleFontSize, GeneratedTokenAccessor_IconGallery_EA31BC5814CFC1C8.Instance, 1),
+                    TokenDescriptor.CreateGenerated("GalleryIconSize", 1, TokenStage.Control, TokenValueCodec<global::System.Double>.Instance, global::GravityGallery.Controls.DesignTokens.IconGalleryTokenKind.GalleryIconSize, GeneratedTokenAccessor_IconGallery_EA31BC5814CFC1C8.Instance, 1),
+                    TokenDescriptor.CreateGenerated("InfoItemSize", 2, TokenStage.Control, TokenValueCodec<global::System.Double>.Instance, global::GravityGallery.Controls.DesignTokens.IconGalleryTokenKind.InfoItemSize, GeneratedTokenAccessor_IconGallery_EA31BC5814CFC1C8.Instance, 1),
+                    TokenDescriptor.CreateGenerated("SearchInputMargin", 3, TokenStage.Control, TokenValueCodec<global::Avalonia.Thickness>.Instance, global::GravityGallery.Controls.DesignTokens.IconGalleryTokenKind.SearchInputMargin, GeneratedTokenAccessor_IconGallery_EA31BC5814CFC1C8.Instance, 1),
                 },
                 static () => new global::GravityGallery.Controls.IconGalleryToken()
             );
@@ -49,9 +50,10 @@ internal sealed class GeneratedTokenAccessor_IconGallery_EA31BC5814CFC1C8 : Toke
     {
         switch (slot)
         {
-            case 0: return ((global::GravityGallery.Controls.IconGalleryToken)token).GalleryIconSize;
-            case 1: return ((global::GravityGallery.Controls.IconGalleryToken)token).InfoItemSize;
-            case 2: return ((global::GravityGallery.Controls.IconGalleryToken)token).SearchInputMargin;
+            case 0: return ((global::GravityGallery.Controls.IconGalleryToken)token).EmptyTitleFontSize;
+            case 1: return ((global::GravityGallery.Controls.IconGalleryToken)token).GalleryIconSize;
+            case 2: return ((global::GravityGallery.Controls.IconGalleryToken)token).InfoItemSize;
+            case 3: return ((global::GravityGallery.Controls.IconGalleryToken)token).SearchInputMargin;
             default: throw new global::System.ArgumentOutOfRangeException(nameof(slot));
         }
     }
@@ -60,9 +62,10 @@ internal sealed class GeneratedTokenAccessor_IconGallery_EA31BC5814CFC1C8 : Toke
     {
         switch (slot)
         {
-            case 0: ((global::GravityGallery.Controls.IconGalleryToken)token).GalleryIconSize = (global::System.Double)value!; return;
-            case 1: ((global::GravityGallery.Controls.IconGalleryToken)token).InfoItemSize = (global::System.Double)value!; return;
-            case 2: ((global::GravityGallery.Controls.IconGalleryToken)token).SearchInputMargin = (global::Avalonia.Thickness)value!; return;
+            case 0: ((global::GravityGallery.Controls.IconGalleryToken)token).EmptyTitleFontSize = (global::System.Double)value!; return;
+            case 1: ((global::GravityGallery.Controls.IconGalleryToken)token).GalleryIconSize = (global::System.Double)value!; return;
+            case 2: ((global::GravityGallery.Controls.IconGalleryToken)token).InfoItemSize = (global::System.Double)value!; return;
+            case 3: ((global::GravityGallery.Controls.IconGalleryToken)token).SearchInputMargin = (global::Avalonia.Thickness)value!; return;
             default: throw new global::System.ArgumentOutOfRangeException(nameof(slot));
         }
     }
@@ -71,9 +74,10 @@ internal sealed class GeneratedTokenAccessor_IconGallery_EA31BC5814CFC1C8 : Toke
     {
         switch (slot)
         {
-            case 0: return global::AtomUI.Theme.Schema.ThemeResourceValue.Project(((global::GravityGallery.Controls.IconGalleryToken)token).GalleryIconSize);
-            case 1: return global::AtomUI.Theme.Schema.ThemeResourceValue.Project(((global::GravityGallery.Controls.IconGalleryToken)token).InfoItemSize);
-            case 2: return global::AtomUI.Theme.Schema.ThemeResourceValue.Project(((global::GravityGallery.Controls.IconGalleryToken)token).SearchInputMargin);
+            case 0: return global::AtomUI.Theme.Schema.ThemeResourceValue.Project(((global::GravityGallery.Controls.IconGalleryToken)token).EmptyTitleFontSize);
+            case 1: return global::AtomUI.Theme.Schema.ThemeResourceValue.Project(((global::GravityGallery.Controls.IconGalleryToken)token).GalleryIconSize);
+            case 2: return global::AtomUI.Theme.Schema.ThemeResourceValue.Project(((global::GravityGallery.Controls.IconGalleryToken)token).InfoItemSize);
+            case 3: return global::AtomUI.Theme.Schema.ThemeResourceValue.Project(((global::GravityGallery.Controls.IconGalleryToken)token).SearchInputMargin);
             default: throw new global::System.ArgumentOutOfRangeException(nameof(slot));
         }
     }

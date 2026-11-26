@@ -17,5 +17,7 @@
     <unit id="UsageGuide"><segment><source>Usage guide</source><target state="translated">Guia de uso</target></segment></unit>
     <unit id="OpenNuGet"><segment><source>Open NuGet</source><target state="translated">Abrir NuGet</target></segment></unit>
     <unit id="OpenGitHub"><segment><source>Open GitHub</source><target state="translated">Abrir GitHub</target></segment></unit>
+    <unit id="UpstreamAcknowledgementMessage"><segment><source>Special thanks to the Gravity UI team for open-sourcing the Gravity UI Icons library (MIT License).</source><target state="translated">Agradecimento especial à equipe do Gravity UI por disponibilizar a biblioteca Gravity UI Icons em código aberto (Licença MIT).</target></segment></unit>
+    <unit id="UpstreamAcknowledgementLink"><segment><source>gravity-ui/icons</source><target state="translated">gravity-ui/icons</target></segment></unit>
   </file>
 </xliff>

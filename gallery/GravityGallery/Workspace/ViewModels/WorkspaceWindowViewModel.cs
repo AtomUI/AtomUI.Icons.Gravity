@@ -7,7 +7,7 @@ namespace GravityGallery.Workspace.ViewModels;
 
 public sealed class WorkspaceWindowViewModel : GalleryWorkspaceViewModel
 {
-    private IconThemeType _iconTheme = IconThemeType.Filled;
+    private IconThemeType _iconTheme = IconThemeType.Outlined;
     private readonly IDisposable _routeLifecycleSubscription;
 
     public CaseNavigationViewModel CaseNavigation => (CaseNavigationViewModel)Navigation;

@@ -1,5 +1,7 @@
 using AtomUI;
+using AtomUI.DesignLanguages.AntDesign;
 using AtomUI.Desktop.Controls;
+using AtomUI.Desktop.Controls.Themes.AntDesign;
 using AtomUI.Toolkits.GalleryBase;
 using Avalonia;
 using Avalonia.Headless;
@@ -37,12 +39,22 @@ public static class TestAppBuilder
 {
     public static AppBuilder BuildAvaloniaApp()
     {
+        // 与桌面宿主 GalleryApplication.Configure 保持同一组合：共享库不能引用语言包，语言由宿主启用
         return AppBuilder.Configure<TestApplication>()
                          .UseHeadless(new AvaloniaHeadlessPlatformOptions())
                          .UseReactiveUI(build =>
                              build.ConfigureViewLocator(locator =>
                                  global::GravityGallery.GravityGalleryModule.RegisterViews(locator)))
-                         .UseAtomUI(BaseGalleryApplication.ConfigureCore);
+                         .UseAtomUI(builder =>
+                         {
+                             BaseGalleryApplication.ConfigureCore(builder);
+                             builder.UseAntDesign(ant =>
+                             {
+                                 ant.WithDefaultTheme(AntDesignThemes.DaybreakBlue);
+                                 ant.AddDesktopControls();
+                             });
+                             builder.WithInitialDesignLanguage<AntDesignLanguage>();
+                         });
     }
 }
 

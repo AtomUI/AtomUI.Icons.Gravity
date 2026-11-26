@@ -16,8 +16,22 @@
             <Image Name="OverviewBanner"
                    Source="/Assets/atomui-gravity-icons-banner.webp"
                    Stretch="Uniform"
+                   RenderOptions.BitmapInterpolationMode="HighQuality"
                    HorizontalAlignment="Center"
                    MaxWidth="920" />
+
+            <atom:Alert Name="UpstreamAcknowledgementAlert"
+                        Type="Info"
+                        IsShowIcon="True"
+                        Message="{gallery:OverviewPageLangResource UpstreamAcknowledgementMessage}">
+                <atom:Alert.ExtraAction>
+                    <atom:HyperLinkButton Name="GravityIconsUpstreamLink"
+                                          Content="{gallery:OverviewPageLangResource UpstreamAcknowledgementLink}"
+                                          Icon="{antdicons:AntDesignIconProvider Kind=GithubOutlined}"
+                                          NavigateUri="{Binding GravityIconsUpstreamUri}"
+                                          VerticalAlignment="Center" />
+                </atom:Alert.ExtraAction>
+            </atom:Alert>
 
             <Border Background="{atom:SharedTokenResource ColorBgContainer}"
                     BorderBrush="{atom:SharedTokenResource ColorBorderSecondary}"

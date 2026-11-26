@@ -7,4 +7,5 @@ public static class GalleryProjectLinks
     public const string GitHub = "https://github.com/AtomUI/AtomUI.Icons.Gravity";
     public const string Issues = "https://github.com/AtomUI/AtomUI.Icons.Gravity/issues";
     public const string AtomUI = "https://www.atomui.net";
+    public const string GravityIconsUpstream = "https://github.com/gravity-ui/icons";
 }

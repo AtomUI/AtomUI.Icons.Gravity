@@ -25,28 +25,29 @@ public class IconGalleryInteractionTests
 
         foreach (var theme in GravityThemes)
         {
-            repository.Category = "Action";
+            repository.Category = "Arrows";
             repository.IconTheme = theme;
             repository.Filter = null;
             repository.RefreshIconInfos();
 
+            var total = repository.MatchedIconCount;
+            total.ShouldBeGreaterThan(0, theme.ToString());
             var initial = repository.ActivatedIconInfos!.ToArray();
-            repository.MatchedIconCount.ShouldBeGreaterThanOrEqualTo(initial.Length);
-            repository.HasMatches.ShouldBeTrue();
-            initial.Length.ShouldBe(96, theme.ToString());
-            initial.ShouldAllBe(info => info.Category == "Action" && info.ThemeType == theme);
+            initial.Length.ShouldBe(Math.Min(96, total), theme.ToString());
+            initial.ShouldAllBe(info => info.Category == "Arrows" && info.ThemeType == theme);
 
             repository.LoadMoreIconInfos();
-            repository.ActivatedIconInfos!.Count().ShouldBe(192, theme.ToString());
+            repository.ActivatedIconInfos!.Count().ShouldBe(Math.Min(192, total), theme.ToString());
         }
 
-        repository.Category = "Alert";
-        repository.Filter = "WARN";
+        repository.Category = "Status";
+        repository.IconTheme = IconThemeType.Outlined;
+        repository.Filter = "ALARM";
         repository.ActivatedIconInfos.ShouldNotBeNull();
         repository.ActivatedIconInfos.ShouldNotBeEmpty();
         repository.ActivatedIconInfos!.ShouldAllBe(info =>
-            info.Category == "Alert" &&
-            info.Name.Contains("warn", StringComparison.InvariantCultureIgnoreCase));
+            info.Category == "Status" &&
+            info.Name.Contains("alarm", StringComparison.InvariantCultureIgnoreCase));
         repository.MatchedIconCount.ShouldBeGreaterThanOrEqualTo(repository.ActivatedIconInfos.Count());
         repository.HasMatches.ShouldBeTrue();
 
@@ -61,28 +62,31 @@ public class IconGalleryInteractionTests
     {
         var repository = new IconInfoRepository
         {
-            Category = "Action",
-            IconTheme = IconThemeType.Filled
+            Category = "Arrows",
+            IconTheme = IconThemeType.Outlined
         };
         repository.RefreshIconInfos();
         var previous = repository.ActivatedIconInfos!.ToArray();
         previous.ShouldNotBeEmpty();
         previous.ShouldAllBe(info => info.Icon != null);
 
-        repository.Category = "Alert";
+        repository.Category = "Layout";
 
         var afterCategory = repository.ActivatedIconInfos!.ToArray();
-        repository.IconTheme = IconThemeType.Sharp;
+        afterCategory.ShouldNotBeEmpty();
+        repository.IconTheme = IconThemeType.Filled;
         var afterTheme = repository.ActivatedIconInfos!.ToArray();
-        repository.Filter = "warn";
+        afterTheme.ShouldNotBeEmpty();
+        repository.Filter = "PIN";
 
         previous.ShouldAllBe(info => info.Icon == null);
         afterCategory.ShouldAllBe(info => info.Icon == null);
         afterTheme.ShouldAllBe(info => info.Icon == null);
+        repository.MatchedIconCount.ShouldBeGreaterThan(0);
         repository.ActivatedIconInfos!.ShouldAllBe(info =>
-            info.Category == "Alert" &&
-            info.ThemeType == IconThemeType.Sharp &&
-            info.Name.Contains("warn", StringComparison.InvariantCultureIgnoreCase));
+            info.Category == "Layout" &&
+            info.ThemeType == IconThemeType.Filled &&
+            info.Name.Contains("pin", StringComparison.InvariantCultureIgnoreCase));
     }
 
     [Fact]
@@ -92,8 +96,8 @@ public class IconGalleryInteractionTests
         var repository = new IconInfoRepository();
         var gallery = new IconGallery
         {
-            Category = "Action",
-            IconTheme = IconThemeType.Filled,
+            Category = "Status",
+            IconTheme = IconThemeType.Outlined,
             IconInfoRepository = repository
         };
         using var host = Show(gallery, 800, 500);
@@ -110,16 +114,17 @@ public class IconGalleryInteractionTests
 
         repository.Filter.ShouldBe("alarm");
         scrollViewer.Offset.Y.ShouldBe(0);
+        repository.MatchedIconCount.ShouldBe(1);
         repository.ActivatedIconInfos!.ShouldAllBe(info =>
             info.Name.Contains("alarm", StringComparison.InvariantCultureIgnoreCase));
 
         scrollViewer.Offset = new Vector(0, 100);
-        gallery.Category = "Alert";
+        gallery.Category = "Layout";
         Dispatcher.UIThread.RunJobs();
         scrollViewer.Offset.Y.ShouldBe(0);
 
         scrollViewer.Offset = new Vector(0, 100);
-        gallery.IconTheme = IconThemeType.Rounded;
+        gallery.IconTheme = IconThemeType.Filled;
         Dispatcher.UIThread.RunJobs();
         scrollViewer.Offset.Y.ShouldBe(0);
     }
@@ -135,14 +140,14 @@ public class IconGalleryInteractionTests
             feedback.Add);
         using var host = Show(page, 800, 500);
 
-        var first = page.RequestCopyAsync("ActionAlarmFilled");
-        var second = page.RequestCopyAsync("AlertWarningFilled");
-        writes["AlertWarningFilled"].SetResult();
+        var first = page.RequestCopyAsync("AlarmFilled");
+        var second = page.RequestCopyAsync("GearOutlined");
+        writes["GearOutlined"].SetResult();
         (await second).ShouldBeTrue();
-        writes["ActionAlarmFilled"].SetResult();
+        writes["AlarmFilled"].SetResult();
         (await first).ShouldBeFalse();
 
-        feedback.ShouldBe(["<AlertWarningFilled /> copied 🎉"]);
+        feedback.ShouldBe(["<GearOutlined /> copied 🎉"]);
     }
 
     [Fact]
@@ -154,7 +159,7 @@ public class IconGalleryInteractionTests
         var missingPage = new IconCatalogPage(null, missingFeedback.Add);
         using (var missingHost = Show(missingPage, 800, 500))
         {
-            (await missingPage.RequestCopyAsync("ActionAlarmFilled")).ShouldBeFalse();
+            (await missingPage.RequestCopyAsync("AlarmFilled")).ShouldBeFalse();
             missingFeedback.ShouldBeEmpty();
         }
 
@@ -164,7 +169,7 @@ public class IconGalleryInteractionTests
             failedFeedback.Add);
         using (var failedHost = Show(failedPage, 800, 500))
         {
-            (await failedPage.RequestCopyAsync("ActionAlarmFilled")).ShouldBeFalse();
+            (await failedPage.RequestCopyAsync("AlarmFilled")).ShouldBeFalse();
             failedFeedback.ShouldBeEmpty();
         }
 
@@ -172,7 +177,7 @@ public class IconGalleryInteractionTests
         var detachedFeedback = new List<string>();
         var detachedPage = new IconCatalogPage((_, _) => deferred.Task, detachedFeedback.Add);
         using var detachedHost = Show(detachedPage, 800, 500);
-        var pending = detachedPage.RequestCopyAsync("ActionAlarmFilled");
+        var pending = detachedPage.RequestCopyAsync("AlarmFilled");
         detachedHost.Window.Content = null;
         Dispatcher.UIThread.RunJobs();
         deferred.SetResult();
@@ -182,30 +187,30 @@ public class IconGalleryInteractionTests
     }
 
     [Fact]
-    public void Catalog_header_shows_title_count_and_five_persistent_theme_choices()
+    public void Catalog_header_shows_title_count_and_two_persistent_theme_choices()
     {
         AvaloniaTestApp.EnsureInitialized();
         using var workspace = new WorkspaceWindowViewModel();
-        using var viewModel = new IconCatalogPageViewModel(workspace, "Action");
+        using var viewModel = new IconCatalogPageViewModel(workspace, "Arrows");
         var page = new IconCatalogPage { DataContext = viewModel };
         using var host = Show(page, 1020, 620);
 
-        page.FindControl<AtomUI.Desktop.Controls.TextBlock>("CategoryTitle")!.Text.ShouldBe("Action");
+        page.FindControl<AtomUI.Desktop.Controls.TextBlock>("CategoryTitle")!.Text.ShouldBe("Arrows");
         page.FindControl<AtomUI.Desktop.Controls.TextBlock>("ResultCount")!.Text.ShouldNotBeNullOrWhiteSpace();
         var selector = page.FindControl<Segmented>("IconThemeSelector")!;
-        selector.Items.Count.ShouldBe(5);
+        selector.Items.Count.ShouldBe(2);
         selector.SelectedIndex.ShouldBe(0);
         var selectorRight = selector.TranslatePoint(new Point(selector.Bounds.Width, 0), page)
                                     .ShouldNotBeNull()
                                     .X;
         selectorRight.ShouldBe(page.Bounds.Width - 24, tolerance: 1);
 
-        selector.SelectedIndex = 2;
+        selector.SelectedIndex = 1;
         Dispatcher.UIThread.RunJobs();
-        workspace.IconTheme.ShouldBe(IconThemeType.Rounded);
+        workspace.IconTheme.ShouldBe(IconThemeType.Filled);
 
-        using var nextViewModel = new IconCatalogPageViewModel(workspace, "Alert");
-        nextViewModel.SelectedThemeIndex.ShouldBe(2);
+        using var nextViewModel = new IconCatalogPageViewModel(workspace, "Layout");
+        nextViewModel.SelectedThemeIndex.ShouldBe(1);
     }
 
     [Fact]
@@ -213,12 +218,21 @@ public class IconGalleryInteractionTests
     {
         AvaloniaTestApp.EnsureInitialized();
         using var workspace = new WorkspaceWindowViewModel();
-        using var viewModel = new IconCatalogPageViewModel(workspace, "Action");
+        using var viewModel = new IconCatalogPageViewModel(workspace, "Arrows");
         var page = new IconCatalogPage { DataContext = viewModel };
         using var host = Show(page, 760, 560);
 
         var title = page.FindControl<AtomUI.Desktop.Controls.TextBlock>("CategoryTitle")!;
         var selector = page.FindControl<Segmented>("IconThemeSelector")!;
+
+        // Gravity 只有两个主题，760 宽时选择器与标题同行
+        var sameRowTopLeft = selector.TranslatePoint(default, page).ShouldNotBeNull();
+        sameRowTopLeft.Y.ShouldBeLessThan(title.TranslatePoint(new Point(0, title.Bounds.Height), page).ShouldNotBeNull().Y);
+        (sameRowTopLeft.X + selector.Bounds.Width).ShouldBeLessThanOrEqualTo(page.Bounds.Width);
+
+        // 窗口继续变窄时，选择器换行到标题下方，而不是压缩标签
+        host.Window.Width = 360;
+        Dispatcher.UIThread.RunJobs();
         var selectorTopLeft = selector.TranslatePoint(default, page).ShouldNotBeNull();
         var titleBottomLeft = title.TranslatePoint(new Point(0, title.Bounds.Height), page).ShouldNotBeNull();
         (selectorTopLeft.X + selector.Bounds.Width).ShouldBeLessThanOrEqualTo(page.Bounds.Width);
@@ -249,16 +263,16 @@ public class IconGalleryInteractionTests
         var feedback = new List<string>();
         var oldPage = new IconCatalogPage((_, _) => oldWrite.Task, feedback.Add);
         using var host = Show(oldPage, 800, 500);
-        var oldRequest = oldPage.RequestCopyAsync("ActionAlarmFilled");
+        var oldRequest = oldPage.RequestCopyAsync("AlarmFilled");
 
         var newPage = new IconCatalogPage((_, _) => Task.CompletedTask, feedback.Add);
         host.Window.Content = newPage;
         Dispatcher.UIThread.RunJobs();
-        (await newPage.RequestCopyAsync("AlertWarningFilled")).ShouldBeTrue();
+        (await newPage.RequestCopyAsync("GearOutlined")).ShouldBeTrue();
         oldWrite.SetResult();
 
         (await oldRequest).ShouldBeFalse();
-        feedback.ShouldBe(["<AlertWarningFilled /> copied 🎉"]);
+        feedback.ShouldBe(["<GearOutlined /> copied 🎉"]);
     }
 
     [Fact]
@@ -268,15 +282,15 @@ public class IconGalleryInteractionTests
         var manager = Application.Current!.GetLanguageManager()!;
         manager.ChangeLanguage(LanguageTags.EnUS);
         using var workspace = new WorkspaceWindowViewModel();
-        var viewModel = new IconCatalogPageViewModel(workspace, "Action");
+        var viewModel = new IconCatalogPageViewModel(workspace, "Arrows");
 
-        viewModel.CategoryTitle.ShouldBe("Action");
+        viewModel.CategoryTitle.ShouldBe("Arrows");
         manager.ChangeLanguage(LanguageTags.ZhCN);
-        viewModel.CategoryTitle.ShouldBe("操作");
+        viewModel.CategoryTitle.ShouldBe("箭头");
 
         viewModel.Dispose();
         manager.ChangeLanguage(LanguageTags.EnUS);
-        viewModel.CategoryTitle.ShouldBe("操作");
+        viewModel.CategoryTitle.ShouldBe("箭头");
     }
 
     [Fact]
@@ -285,27 +299,25 @@ public class IconGalleryInteractionTests
         AvaloniaTestApp.EnsureInitialized();
         using var workspace = new WorkspaceWindowViewModel();
 
-        workspace.CaseNavigation.NavigateToCommand.Execute("Action").Subscribe();
+        workspace.CaseNavigation.NavigateToCommand.Execute("Arrows").Subscribe();
         Dispatcher.UIThread.RunJobs();
         var first = workspace.Router.NavigationStack[0].ShouldBeOfType<IconCatalogPageViewModel>();
         first.IconInfoRepository.MatchedIconCount.ShouldBeGreaterThan(0);
 
-        workspace.CaseNavigation.NavigateToCommand.Execute("Alert").Subscribe();
+        workspace.CaseNavigation.NavigateToCommand.Execute("Layout").Subscribe();
         Dispatcher.UIThread.RunJobs();
 
         workspace.Router.NavigationStack[0].ShouldBeOfType<IconCatalogPageViewModel>()
-                 .Category.ShouldBe("Alert");
+                 .Category.ShouldBe("Layout");
         first.IconInfoRepository.MatchedIconCount.ShouldBe(0);
         first.IconInfoRepository.HasMatches.ShouldBeFalse();
     }
 
+    // Gravity 只有上游的 regular（Outlined）与 fill（Filled）两种风格
     private static readonly IconThemeType[] GravityThemes =
     [
         IconThemeType.Filled,
-        IconThemeType.Outlined,
-        IconThemeType.Rounded,
-        IconThemeType.Sharp,
-        IconThemeType.TwoTone
+        IconThemeType.Outlined
     ];
 
     private static ScrollViewer FindGalleryScrollViewer(Control gallery)

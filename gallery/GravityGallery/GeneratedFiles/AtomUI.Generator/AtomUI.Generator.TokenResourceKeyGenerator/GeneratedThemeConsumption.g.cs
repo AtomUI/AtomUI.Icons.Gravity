@@ -18,6 +18,7 @@ internal static class GeneratedThemeConsumption
 {
     public static readonly OwnTokenEntry[] OwnTokens = new OwnTokenEntry[]
     {
+        new OwnTokenEntry("GravityGallery", "IconGallery", "EmptyTitleFontSize", OwnTokenState.Active, null),
         new OwnTokenEntry("GravityGallery", "IconGallery", "GalleryIconSize", OwnTokenState.Active, null),
         new OwnTokenEntry("GravityGallery", "IconGallery", "InfoItemSize", OwnTokenState.Active, null),
         new OwnTokenEntry("GravityGallery", "IconGallery", "SearchInputMargin", OwnTokenState.Active, null),
@@ -25,6 +26,16 @@ internal static class GeneratedThemeConsumption
 
     public static readonly GlobalConsumerEntry[] GlobalConsumers = new GlobalConsumerEntry[]
     {
-        new GlobalConsumerEntry("GravityGallery", "IconGallery", "UniformlyMarginXS", "code"),
+        new GlobalConsumerEntry("GravityGallery", "IconGallery", "ColorTextSecondary", "axaml"),
+        new GlobalConsumerEntry("GravityGallery", "IconGallery", "EnableMotion", "axaml"),
+        new GlobalConsumerEntry("GravityGallery", "IconGallery", "PaddingLG", "axaml"),
+        new GlobalConsumerEntry("GravityGallery", "IconGallery", "SpacingXS", "axaml"),
+        new GlobalConsumerEntry("GravityGallery", "IconInfoItem", "BorderRadius", "axaml"),
+        new GlobalConsumerEntry("GravityGallery", "IconInfoItem", "ColorBgTextHover", "axaml"),
+        new GlobalConsumerEntry("GravityGallery", "IconInfoItem", "EnableMotion", "axaml"),
+        new GlobalConsumerEntry("GravityGallery", "IconInfoItem", "FontSizeSM", "axaml"),
+        new GlobalConsumerEntry("GravityGallery", "IconInfoItem", "PaddingXS", "axaml"),
+        new GlobalConsumerEntry("GravityGallery", "IconInfoItem", "SpacingLG", "axaml"),
+        new GlobalConsumerEntry("GravityGallery", "shared-primitive", "BorderRadiusXS", "code"),
     };
 }

@@ -36,16 +36,16 @@
                         <Border Name="IconGalleryEmptyState"
                                 IsVisible="{Binding !HasMatches, RelativeSource={RelativeSource TemplatedParent}}"
                                 IsHitTestVisible="False"
-                                Padding="24">
+                                Padding="{gallery:IconGalleryTokenResource PaddingLG}">
                             <StackPanel HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Spacing="8">
+                                        Spacing="{gallery:IconGalleryTokenResource SpacingXS}">
                                 <atom:TextBlock Text="{TemplateBinding EmptyTitle}"
-                                                FontSize="18"
+                                                FontSize="{gallery:IconGalleryTokenResource EmptyTitleFontSize}"
                                                 FontWeight="SemiBold"
                                                 TextAlignment="Center" />
                                 <atom:TextBlock Text="{TemplateBinding EmptyDescription}"
-                                                Foreground="{atom:SharedTokenResource ColorTextSecondary}"
+                                                Foreground="{gallery:IconGalleryTokenResource ColorTextSecondary}"
                                                 TextAlignment="Center"
                                                 TextWrapping="Wrap" />
                             </StackPanel>
@@ -55,7 +55,7 @@
             </ControlTemplate>
         </Setter>
 
-        <Setter Property="IsMotionEnabled" Value="{atom:SharedTokenResource EnableMotion}" />
+        <Setter Property="IsMotionEnabled" Value="{gallery:IconGalleryTokenResource EnableMotion}" />
         <Style Selector="^ /template/ atom|SearchEdit#PART_SearchInput">
             <Setter Property="Margin"
                     Value="{gallery:IconGalleryTokenResource SearchInputMargin}" />

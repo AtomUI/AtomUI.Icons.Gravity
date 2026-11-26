@@ -46,14 +46,15 @@ public class GalleryShellMigrationTests
     }
 
     [Fact]
-    public void Workspace_delegates_shared_state_to_GalleryBase_and_defaults_to_filled_icons()
+    public void Workspace_delegates_shared_state_to_GalleryBase_and_defaults_to_outlined_icons()
     {
         AvaloniaTestApp.EnsureInitialized();
         using var workspace = new WorkspaceWindowViewModel();
 
         workspace.ShouldBeAssignableTo<GalleryWorkspaceViewModel>();
         workspace.CaseNavigation.ShouldBeAssignableTo<GalleryNavigationViewModel>();
-        workspace.IconTheme.ShouldBe(IconThemeType.Filled);
+        // Gravity 的 816 个图标里 737 个是 regular，默认主题取 Outlined
+        workspace.IconTheme.ShouldBe(IconThemeType.Outlined);
         workspace.Navigation.ShouldBeSameAs(workspace.CaseNavigation);
     }
 
@@ -69,11 +70,11 @@ public class GalleryShellMigrationTests
             workspace.CaseNavigation.CanNavigateTo(category).ShouldBeTrue(category);
         }
 
-        workspace.CaseNavigation.NavigateToCommand.Execute("Action").Subscribe();
+        workspace.CaseNavigation.NavigateToCommand.Execute(categories[0]).Subscribe();
         workspace.Router.NavigationStack.Count.ShouldBe(1);
 
         workspace.Dispose();
-        workspace.CaseNavigation.NavigateToCommand.Execute("Alert").Subscribe();
+        workspace.CaseNavigation.NavigateToCommand.Execute(categories[1]).Subscribe();
         workspace.Router.NavigationStack.Count.ShouldBe(1);
     }
 
@@ -240,12 +241,7 @@ public class GalleryShellMigrationTests
             var targetSidebarWidth = initialCollapsed
                 ? GravityGalleryModule.GetConfiguration().Shell.SidebarWidth
                 : navMenu.InlineCollapsedWidth;
-            SpinWait.SpinUntil(() =>
-            {
-                Dispatcher.UIThread.RunJobs();
-                window.UpdateLayout();
-                return Math.Abs(sidebar.Bounds.Width - targetSidebarWidth) <= 0.5;
-            }, TimeSpan.FromSeconds(3)).ShouldBeTrue(
+            HeadlessWait.Until(window, () => Math.Abs(sidebar.Bounds.Width - targetSidebarWidth) <= 0.5).ShouldBeTrue(
                 $"sidebar collapse animation should reach its target width of {targetSidebarWidth}");
             using var toggledFrame = window.CaptureRenderedFrame();
 
@@ -288,7 +284,7 @@ public class GalleryShellMigrationTests
             var menu = ((IGallerySidebarNavMenuHost)navigation).SidebarNavMenu;
             menu.IsInlineCollapsed.ShouldBeFalse();
             var rows = menu.GetVisualDescendants().OfType<HeaderedSelectingItemsControl>().ToArray();
-            var row = rows.FirstOrDefault(control => (control.Header as NavMenuNode)?.ItemKey?.Value == "Action")
+            var row = rows.FirstOrDefault(control => (control.Header as NavMenuNode)?.ItemKey?.Value == "Arrows")
                           .ShouldNotBeNull(string.Join(", ", rows.Select(control => $"{control.GetType().Name}:{control.Header}")));
             var header = row.GetVisualDescendants().OfType<Control>()
                             .Single(control => control.Name == "PART_Header" && ReferenceEquals(control.TemplatedParent, row));
@@ -313,26 +309,21 @@ public class GalleryShellMigrationTests
                 var point = header.TranslatePoint(new Point(x, header.Bounds.Height / 2), window).ShouldNotBeNull();
                 var hit = (window.InputHitTest(point) as Visual).ShouldNotBeNull();
                 (ReferenceEquals(hit, row) || hit.GetVisualAncestors().Contains(row)).ShouldBeTrue(
-                    $"Sidebar Action row should own its full-width input point {point}");
+                    $"Sidebar Arrows row should own its full-width input point {point}");
                 window.MouseMove(point);
                 row.IsPointerOver.ShouldBeTrue();
                 window.MouseDown(point, MouseButton.Left);
                 window.MouseUp(point, MouseButton.Left);
                 Dispatcher.UIThread.RunJobs();
                 window.ViewModel.Router.GetCurrentViewModel().ShouldBeOfType<IconCatalogPageViewModel>()
-                      .Category.ShouldBe("Action", $"click at {point}, header={header.Bounds}, row={row.Bounds}");
+                      .Category.ShouldBe("Arrows", $"click at {point}, header={header.Bounds}, row={row.Bounds}");
             }
 
             var scroll = menu.GetVisualDescendants().OfType<Avalonia.Controls.ScrollViewer>()
                              .First(viewer => viewer.Viewport.Height > 0 && viewer.Extent.Height > viewer.Viewport.Height);
             var initialOffset = scroll.Offset.Y;
             window.MouseWheel(center, new Vector(0, -5));
-            SpinWait.SpinUntil(() =>
-            {
-                Dispatcher.UIThread.RunJobs();
-                window.UpdateLayout();
-                return scroll.Offset.Y > initialOffset;
-            }, TimeSpan.FromSeconds(3)).ShouldBeTrue("a wheel event over the sidebar row should scroll the category list");
+            HeadlessWait.Until(window, () => scroll.Offset.Y > initialOffset).ShouldBeTrue("a wheel event over the sidebar row should scroll the category list");
         }
         finally
         {

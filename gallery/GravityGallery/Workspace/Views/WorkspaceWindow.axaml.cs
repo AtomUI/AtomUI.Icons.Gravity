@@ -1,10 +1,14 @@
 using System.Reactive;
 using AtomUI.Desktop.Controls;
+using AtomUI.Theme;
 using AtomUI.Toolkits.GalleryBase.Controls;
 using AtomUI.Toolkits.GalleryBase.Shell;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.VisualTree;
 using GravityGallery.Workspace.ViewModels;
+using DesktopMenu = AtomUI.Desktop.Controls.Menu;
 using MenuItem = AtomUI.Desktop.Controls.MenuItem;
 
 namespace GravityGallery.Workspace.Views;
@@ -17,7 +21,13 @@ internal enum WindowMenuItemKind
     Maximize,
     Move,
     Resize,
+    ThemeCatalog,
+    BrandColor,
+    NeutralColor,
+    OtherThemes,
+    LightMode,
     DarkMode,
+    FollowSystem,
     Compact,
     Motion,
     WaveSpirit,
@@ -32,6 +42,7 @@ public partial class WorkspaceWindow : ReactiveWindow<WorkspaceWindowViewModel>
     public const string LanguageId = nameof(WorkspaceWindow);
     private const string TitleBarMenuResourceKey = "WorkspaceTitleBarMenu";
     private GalleryShellView? _shellView;
+    private GalleryThemeMenu? _themeMenu;
     private bool _released;
 
     public WorkspaceWindow()
@@ -48,6 +59,7 @@ public partial class WorkspaceWindow : ReactiveWindow<WorkspaceWindowViewModel>
             return;
         }
 
+        ConfigureThemeMenu();
         var navigation = new CaseNavigation
         {
             Name      = "CategoryNavigation",
@@ -87,6 +99,12 @@ public partial class WorkspaceWindow : ReactiveWindow<WorkspaceWindowViewModel>
         base.OnClosed(e);
     }
 
+    protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        ReleaseWorkspace();
+        base.OnDetachedFromVisualTree(e);
+    }
+
     private void ReleaseWorkspace()
     {
         if (_released)
@@ -95,9 +113,41 @@ public partial class WorkspaceWindow : ReactiveWindow<WorkspaceWindowViewModel>
         }
         _released = true;
         RemoveHandler(MenuItem.ClickEvent, HandleMenuItemClick);
+        _themeMenu?.Dispose();
+        _themeMenu = null;
         _shellView?.Dispose();
         _shellView = null;
         ViewModel?.Dispose();
+    }
+
+    // 标题栏 Theme 菜单的设计语言、品牌色、中性色与其他主题四个子菜单由 GalleryThemeMenu 在运行时填充，
+    // 结构与交互和 AtomUI Gallery 保持一致。
+    private void ConfigureThemeMenu()
+    {
+        if (ViewModel is null ||
+            !Resources.TryGetValue(TitleBarMenuResourceKey, out var menuResource) ||
+            menuResource is not DesktopMenu menu)
+        {
+            return;
+        }
+
+        var themeItems = menu.Items
+                             .OfType<MenuItem>()
+                             .SelectMany(static item => item.Items.OfType<MenuItem>())
+                             .Where(static item => item.Tag is WindowMenuItemKind.ThemeCatalog or
+                                 WindowMenuItemKind.BrandColor or
+                                 WindowMenuItemKind.NeutralColor or
+                                 WindowMenuItemKind.OtherThemes)
+                             .ToDictionary(static item => (WindowMenuItemKind)item.Tag!);
+        if (!themeItems.TryGetValue(WindowMenuItemKind.ThemeCatalog, out var designLanguageItem) ||
+            !themeItems.TryGetValue(WindowMenuItemKind.BrandColor, out var brandColorItem) ||
+            !themeItems.TryGetValue(WindowMenuItemKind.NeutralColor, out var neutralColorItem) ||
+            !themeItems.TryGetValue(WindowMenuItemKind.OtherThemes, out var otherThemesItem))
+        {
+            return;
+        }
+
+        _themeMenu = new GalleryThemeMenu(ViewModel, designLanguageItem, brandColorItem, neutralColorItem, otherThemesItem);
     }
 
     private void HandleMenuItemClick(object? sender, RoutedEventArgs e)
@@ -129,30 +179,76 @@ public partial class WorkspaceWindow : ReactiveWindow<WorkspaceWindowViewModel>
             case WindowMenuItemKind.Resize:
                 CanResize = menuItem.IsChecked;
                 break;
+            case WindowMenuItemKind.LightMode:
+                ViewModel.SetAppearanceModeCommand.Execute(ThemePreference.Light)
+                         .Subscribe();
+                break;
             case WindowMenuItemKind.DarkMode:
-                ViewModel.ToggleDarkModeCommand.Execute(menuItem.IsChecked).Subscribe();
+                ViewModel.SetAppearanceModeCommand.Execute(ThemePreference.Dark)
+                         .Subscribe();
+                break;
+            case WindowMenuItemKind.FollowSystem:
+                ViewModel.SetAppearanceModeCommand.Execute(ThemePreference.System)
+                         .Subscribe();
                 break;
             case WindowMenuItemKind.Compact:
-                ViewModel.ToggleCompactModeCommand.Execute(menuItem.IsChecked).Subscribe();
+                ViewModel.ToggleCompactModeCommand.Execute(menuItem.IsChecked)
+                         .Subscribe();
                 break;
             case WindowMenuItemKind.Motion:
-                ViewModel.ToggleMotionCommand.Execute(menuItem.IsChecked).Subscribe();
+                if (!menuItem.IsChecked &&
+                    FindSiblingMenuItem(menuItem, WindowMenuItemKind.WaveSpirit) is { } waveSpiritMenuItem)
+                {
+                    waveSpiritMenuItem.IsChecked = false;
+                }
+                ViewModel.ToggleMotionCommand.Execute(menuItem.IsChecked)
+                         .Subscribe();
                 break;
             case WindowMenuItemKind.WaveSpirit:
-                ViewModel.ToggleWaveSpiritCommand.Execute(menuItem.IsChecked).Subscribe();
+                if (menuItem.IsChecked &&
+                    FindSiblingMenuItem(menuItem, WindowMenuItemKind.Motion) is { } motionMenuItem)
+                {
+                    motionMenuItem.IsChecked = true;
+                }
+                ViewModel.ToggleWaveSpiritCommand.Execute(menuItem.IsChecked)
+                         .Subscribe();
                 break;
             case WindowMenuItemKind.LanguageZhCN:
-                ViewModel.SwitchToZhCNCommand.Execute(Unit.Default).Subscribe();
+                ViewModel.SwitchToZhCNCommand.Execute(Unit.Default)
+                         .Subscribe();
                 break;
             case WindowMenuItemKind.LanguageZhTW:
-                ViewModel.SwitchToZhTWCommand.Execute(Unit.Default).Subscribe();
+                ViewModel.SwitchToZhTWCommand.Execute(Unit.Default)
+                         .Subscribe();
                 break;
             case WindowMenuItemKind.LanguageEnUS:
-                ViewModel.SwitchToEnUSCommand.Execute(Unit.Default).Subscribe();
+                ViewModel.SwitchToEnUSCommand.Execute(Unit.Default)
+                         .Subscribe();
                 break;
             case WindowMenuItemKind.LanguagePtBR:
-                ViewModel.SwitchToPtBRCommand.Execute(Unit.Default).Subscribe();
+                ViewModel.SwitchToPtBRCommand.Execute(Unit.Default)
+                         .Subscribe();
                 break;
         }
+    }
+
+    private static MenuItem? FindSiblingMenuItem(MenuItem menuItem, WindowMenuItemKind kind)
+    {
+        if (menuItem.Parent is not MenuItem parent)
+        {
+            return null;
+        }
+
+        foreach (var item in parent.Items)
+        {
+            if (item is MenuItem sibling &&
+                sibling.Tag is WindowMenuItemKind siblingKind &&
+                siblingKind == kind)
+            {
+                return sibling;
+            }
+        }
+
+        return null;
     }
 }

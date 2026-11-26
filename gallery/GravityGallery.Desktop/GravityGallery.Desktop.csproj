@@ -37,6 +37,8 @@
                           PrivateAssets="all" />
         <PackageReference Include="AtomUI.Controls.I18n.PtBR" />
         <PackageReference Include="AtomUI.Desktop.Controls.I18n.PtBR" />
+        <PackageReference Include="AtomUI.DesignLanguages.AntDesign" />
+        <PackageReference Include="AtomUI.Desktop.Controls.Themes.AntDesign" />
     </ItemGroup>
 
     <ItemGroup>

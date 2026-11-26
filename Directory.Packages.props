@@ -1,16 +1,29 @@
 <Project>
     <PropertyGroup>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
     </PropertyGroup>
     <ItemGroup>
-        <PackageVersion Include="Avalonia.Headless" Version="$(AvaloniaVersion)"/>
-        <PackageVersion Include="Avalonia.Skia" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia" Version="$(AvaloniaVersion)"/>
         <PackageVersion Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
-        <PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1"/>
+        <PackageVersion Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.FreeDesktop" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.FreeDesktop.AtSpi" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.HarfBuzz" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Headless" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Native" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Remote.Protocol" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Skia" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Wayland" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Win32" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.X11" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3"/>
         <PackageVersion Include="AtomUI.Core" Version="$(AtomUIVersion)"/>
         <PackageVersion Include="AtomUI.Controls.I18n.PtBR" Version="$(AtomUIVersion)"/>
         <PackageVersion Include="AtomUI.Desktop.Controls" Version="$(AtomUIVersion)"/>
         <PackageVersion Include="AtomUI.Desktop.Controls.I18n.PtBR" Version="$(AtomUIVersion)"/>
+        <PackageVersion Include="AtomUI.Desktop.Controls.Themes.AntDesign" Version="$(AtomUIVersion)"/>
+        <PackageVersion Include="AtomUI.DesignLanguages.AntDesign" Version="$(AtomUIVersion)"/>
         <PackageVersion Include="AtomUI.Icons.Shared" Version="$(AtomUIVersion)"/>
         <PackageVersion Include="AtomUI.Icons.AntDesign" Version="$(AtomUIVersion)"/>
         <PackageVersion Include="AtomUI.Generator" Version="$(AtomUIVersion)"/>

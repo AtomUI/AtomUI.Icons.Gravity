@@ -20,5 +20,7 @@ public enum OverviewPageLangResourceKind
     BrowseIcons,
     UsageGuide,
     OpenNuGet,
-    OpenGitHub
+    OpenGitHub,
+    UpstreamAcknowledgementMessage,
+    UpstreamAcknowledgementLink
 }

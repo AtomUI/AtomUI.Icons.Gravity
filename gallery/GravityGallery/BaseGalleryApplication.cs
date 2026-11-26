@@ -3,7 +3,6 @@ using System.Globalization;
 using AtomUI;
 using AtomUI.Desktop.Controls;
 using AtomUI.Localization;
-using AtomUI.Theme;
 using AtomUI.Toolkits.GalleryBase;
 using GravityGallery.Localization;
 
@@ -23,7 +22,6 @@ public abstract partial class BaseGalleryApplication : Application
         builder.UseLanguages(
             GalleryLanguageDefaults.Resolve(CultureInfo.CurrentUICulture),
             [LanguageTags.EnUS, LanguageTags.ZhCN, LanguageTags.ZhTW, LanguageTags.PtBR]);
-        builder.WithInitialTheme(IThemeManager.DEFAULT_THEME_ID);
         builder.UseAlibabaSansFont();
         builder.UseDesktopControls();
         builder.UseGalleryBase(GravityGalleryModule.Configure);

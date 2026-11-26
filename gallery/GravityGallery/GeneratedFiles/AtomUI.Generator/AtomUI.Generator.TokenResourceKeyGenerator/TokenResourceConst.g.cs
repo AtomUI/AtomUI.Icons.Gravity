@@ -6,6 +6,7 @@ namespace GravityGallery.Controls.DesignTokens
 {
     public enum IconGalleryTokenKind
     {
+        EmptyTitleFontSize,
         GalleryIconSize,
         InfoItemSize,
         SearchInputMargin,
@@ -271,9 +272,10 @@ namespace GravityGallery.Controls.DesignTokens
         WaveStartOpacity = (int)SharedTokenKind.WaveStartOpacity,
         ZIndexBase = (int)SharedTokenKind.ZIndexBase,
         ZIndexPopupBase = (int)SharedTokenKind.ZIndexPopupBase,
-        GalleryIconSize = -1,
-        InfoItemSize = -2,
-        SearchInputMargin = -3,
+        EmptyTitleFontSize = -1,
+        GalleryIconSize = -2,
+        InfoItemSize = -3,
+        SearchInputMargin = -4,
     }
 
     public static class IconGalleryTokens
@@ -304,7 +306,7 @@ namespace GravityGallery.Controls.DesignTokens
                 return ControlTokenResourceKey.Global(IconGalleryTokens.Identity, (SharedTokenKind)slot);
             }
             var ownSlot = -1 - slot;
-            if ((uint)ownSlot < 3u)
+            if ((uint)ownSlot < 4u)
             {
                 return (IconGalleryTokenKind)ownSlot;
             }

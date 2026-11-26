@@ -35,11 +35,8 @@
             <atom:Segmented Name="IconThemeSelector"
                             SelectedIndex="{Binding SelectedThemeIndex, Mode=TwoWay}"
                             HorizontalAlignment="Right">
-                <atom:SegmentedItem Content="{gallery:WorkspaceWindowLangResource NavigationIconThemeFilled}" />
                 <atom:SegmentedItem Content="{gallery:WorkspaceWindowLangResource NavigationIconThemeOutlined}" />
-                <atom:SegmentedItem Content="{gallery:WorkspaceWindowLangResource NavigationIconThemeRounded}" />
-                <atom:SegmentedItem Content="{gallery:WorkspaceWindowLangResource NavigationIconThemeSharp}" />
-                <atom:SegmentedItem Content="{gallery:WorkspaceWindowLangResource NavigationIconThemeTwoTone}" />
+                <atom:SegmentedItem Content="{gallery:WorkspaceWindowLangResource NavigationIconThemeFilled}" />
             </atom:Segmented>
         </atom:FlexPanel>
 
