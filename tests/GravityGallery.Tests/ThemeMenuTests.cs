@@ -12,6 +12,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
 using GravityGallery.Workspace;
 using GravityGallery.Workspace.ViewModels;
 using GravityGallery.Workspace.Views;
@@ -125,8 +126,7 @@ public class ThemeMenuTests
         var window  = new WorkspaceWindow();
         try
         {
-            window.Show();
-            Dispatcher.UIThread.RunJobs();
+            ShowWithMountedTitleBar(window);
             var viewModel = window.ViewModel!;
             var original  = viewModel.AppearanceMode;
             OpenAppearanceMenu(window);
@@ -176,8 +176,7 @@ public class ThemeMenuTests
         var window  = new WorkspaceWindow();
         try
         {
-            window.Show();
-            Dispatcher.UIThread.RunJobs();
+            ShowWithMountedTitleBar(window);
             var viewModel  = window.ViewModel!;
             OpenThemeMenu(window);
             var motion     = ItemOf(window, WindowMenuItemKind.Motion);
@@ -238,6 +237,25 @@ public class ThemeMenuTests
     private static MenuItem ItemOf(Window window, WindowMenuItemKind kind)
     {
         return Descendants(ThemeMenu(window)).Single(item => Equals(item.Tag, kind));
+    }
+
+    // Windows 下 AtomUI Window 默认开启 CSD，标题栏改由 Win32 WindowDrawnDecorations 承载；
+    // Avalonia.Headless 的窗口实现不挂载 WindowDrawnDecorations，导致标题栏菜单未接入可视树。
+    // 在无头测试中遇到 CSD 窗口时切到非 CSD 模板，确保标题栏菜单接入窗口可视树并正常路由点击事件。
+    private static void ShowWithMountedTitleBar(WorkspaceWindow window)
+    {
+        var isCsdEnabledProperty = typeof(AtomUI.Desktop.Controls.Window).GetProperty(
+            "IsCsdEnabled",
+            BindingFlags.Instance | BindingFlags.NonPublic);
+        if (isCsdEnabledProperty?.GetValue(window) is true)
+        {
+            window.SetValue(AtomUI.Desktop.Controls.Window.OsTypeProperty, OsType.Linux);
+            isCsdEnabledProperty.SetValue(window, false);
+        }
+
+        window.Show();
+        Dispatcher.UIThread.RunJobs();
+        TopLevel.GetTopLevel(ThemeMenu(window)).ShouldBe(window);
     }
 
     // 子菜单弹出后，其中的菜单项才进入可视树，路由事件才能到达窗口上的处理器。
