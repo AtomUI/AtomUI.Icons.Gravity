@@ -15,6 +15,17 @@ REPOSITORY = Path(__file__).resolve().parents[3]
 WORKFLOW = REPOSITORY / ".github/workflows/release-gravity.yml"
 
 
+class ReleaseWorkflowConfigTests(unittest.TestCase):
+    def test_workflow_uses_nuget_trusted_publishing(self):
+        text = WORKFLOW.read_text(encoding="utf-8")
+        self.assertNotIn("secrets.NUGET_API_KEY", text)
+        self.assertIn("environment: production", text)
+        self.assertIn("id-token: write", text)
+        self.assertIn("NuGet/login@8d196754b4036150537f80ac539e15c2f1028841", text)
+        self.assertIn("user: chinware", text)
+        self.assertIn("steps.login.outputs.NUGET_API_KEY", text)
+
+
 @unittest.skipUnless(shutil.which("pwsh"), "PowerShell is required to execute the release workflow step")
 class ReleaseWorkflowTests(unittest.TestCase):
     def setUp(self):
