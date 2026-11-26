@@ -1,0 +1,37 @@
+// This code is auto generated. Do not modify.
+// Upstream: Gravity UI Icons v2.24.0 (a479b875c217), MIT License, Copyright (c) 2022 YANDEX LLC, https://github.com/gravity-ui/icons
+
+using System.Collections.Generic;
+using Avalonia;
+using Avalonia.Media;
+using AtomUI.Controls;
+namespace AtomUI.Icons.Gravity;
+
+public class EyesLookLeftOutlined : GravityIcon
+{
+    public EyesLookLeftOutlined()
+    {
+        IconTheme = IconThemeType.Outlined;
+        ViewBox = new Rect(0, 0, 16, 16);
+    }
+
+    public override Icon CreateInstance()
+    {
+        return new EyesLookLeftOutlined();
+    }
+
+    internal override Rect GeneratedViewBox => new Rect(0, 0, 16, 16);
+    internal override Rect GeneratedGeometryBounds => new Rect(0, 1.5, 16, 13);
+    internal override Matrix GeneratedZoomMatrix => new Matrix(0.91428571428571426, 0, 0, 0.91428571428571426, 0.68571428571428594, 0.68571428571428594);
+
+    private static readonly DrawingInstruction[] StaticInstructions = [
+        new PathDrawingInstruction()
+        {
+            Opacity = 1,
+            FillBrush = IconBrushType.Fill,
+            Data = StreamGeometry.Parse("F0 M6 8c0 1.75-.335 3.094-.816 3.944C4.721 12.764 4.217 13 3.75 13s-.97-.237-1.434-1.056c-.272-.48-.496-1.116-.64-1.895.283.289.647.451 1.074.451C3.826 10.5 4.5 9.47 4.5 8s-.674-2.5-1.75-2.5a1.47 1.47 0 0 0-1.075.45c.145-.778.37-1.415.64-1.894C2.78 3.236 3.284 3 3.75 3s.97.237 1.434 1.056C5.665 4.906 6 6.25 6 8m1.5 0c0 3.822-1.445 6.5-3.75 6.5S0 11.822 0 8s1.445-6.5 3.75-6.5S7.5 4.178 7.5 8m7 0c0 1.75-.335 3.094-.816 3.944-.463.82-.967 1.056-1.434 1.056s-.97-.237-1.434-1.056c-.272-.48-.496-1.116-.64-1.895.283.289.647.451 1.074.451C12.326 10.5 13 9.47 13 8s-.674-2.5-1.75-2.5a1.47 1.47 0 0 0-1.075.45c.145-.778.37-1.415.64-1.894C11.28 3.236 11.784 3 12.25 3s.97.237 1.434 1.056c.481.85.816 2.195.816 3.944M16 8c0 3.822-1.445 6.5-3.75 6.5S8.5 11.822 8.5 8s1.445-6.5 3.75-6.5S16 4.178 16 8"),
+        }
+    ];
+
+    protected override IList<DrawingInstruction> DrawingInstructions => StaticInstructions;
+}

@@ -1,0 +1,24 @@
+<Project>
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageVersion Include="Avalonia.Headless" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Skia" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
+        <PackageVersion Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1"/>
+        <PackageVersion Include="AtomUI.Core" Version="$(AtomUIVersion)"/>
+        <PackageVersion Include="AtomUI.Controls.I18n.PtBR" Version="$(AtomUIVersion)"/>
+        <PackageVersion Include="AtomUI.Desktop.Controls" Version="$(AtomUIVersion)"/>
+        <PackageVersion Include="AtomUI.Desktop.Controls.I18n.PtBR" Version="$(AtomUIVersion)"/>
+        <PackageVersion Include="AtomUI.Icons.Shared" Version="$(AtomUIVersion)"/>
+        <PackageVersion Include="AtomUI.Icons.AntDesign" Version="$(AtomUIVersion)"/>
+        <PackageVersion Include="AtomUI.Generator" Version="$(AtomUIVersion)"/>
+        <PackageVersion Include="AtomUI.Icons.Gravity" Version="$(GravityVersion)"/>
+        <PackageVersion Include="AtomUI.Toolkits.GalleryBase" Version="$(AtomUIVersion)"/>
+        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.3.0"/>
+        <PackageVersion Include="Shouldly" Version="4.3.0"/>
+        <PackageVersion Include="xunit.v3" Version="3.2.2"/>
+        <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5"/>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+<Project>
+    <PropertyGroup>
+        <PackageOutputPath>$(MSBuildThisFileDirectory)../.artifacts/Nuget/$(Configuration)</PackageOutputPath>
+        <OutputPathWithoutFramework>$(MSBuildThisFileDirectory)../.artifacts/bin/$(Configuration)</OutputPathWithoutFramework>
+        <OutputPath>$(OutputPathWithoutFramework)</OutputPath>
+        <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)../.artifacts/$(MSBuildProjectName)/obj</BaseIntermediateOutputPath>
+        <IntermediateOutputPathWithoutFramework>$(BaseIntermediateOutputPath)</IntermediateOutputPathWithoutFramework>
+        <IntermediateOutputPath>$(BaseIntermediateOutputPath)/$(Configuration)</IntermediateOutputPath>
+    </PropertyGroup>
+</Project>

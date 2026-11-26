@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="gallery/GravityGallery.Desktop/GravityGallery.Desktop.csproj" />
+  <Project Path="gallery/GravityGallery/GravityGallery.csproj" />
+  <Project Path="src/AtomUI.Icons.Gravity.Generator/AtomUI.Icons.Gravity.Generator.csproj" />
+  <Project Path="src/AtomUI.Icons.Gravity/AtomUI.Icons.Gravity.csproj" />
+  <Project Path="tests/GravityGallery.Tests/GravityGallery.Tests.csproj" />
+</Solution>

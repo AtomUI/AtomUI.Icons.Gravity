@@ -1,0 +1,92 @@
+<atom:Window xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:atom="https://atomui.net"
+             xmlns:gallery="https://atomui.net/icons/gravity/icons-gallery"
+             xmlns:workspaceviews="using:GravityGallery.Workspace.Views"
+             xmlns:viewModels="using:GravityGallery.Workspace.ViewModels"
+             x:Class="GravityGallery.Workspace.Views.WorkspaceWindow"
+             x:DataType="viewModels:WorkspaceWindowViewModel"
+             Icon="/Assets/gallery-logo.png"
+             Title="{x:Null}"
+             IsPinCaptionButtonVisible="True"
+             IsFullScreenCaptionButtonVisible="True"
+             WindowState="Normal"
+             WindowStartupLocation="CenterScreen"
+             Height="900"
+             MinHeight="720"
+             Width="1300"
+             MinWidth="1040">
+    <atom:Window.Resources>
+        <atom:Menu x:Key="WorkspaceTitleBarMenu">
+            <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemSettings}">
+                <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemWindowOptions}">
+                    <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemEnableFullScreen}"
+                                   ToggleType="CheckBox"
+                                   IsChecked="True"
+                                   Tag="{x:Static workspaceviews:WindowMenuItemKind.FullScreen}" />
+                    <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemEnablePin}"
+                                   ToggleType="CheckBox"
+                                   IsChecked="True"
+                                   Tag="{x:Static workspaceviews:WindowMenuItemKind.Pin}" />
+                    <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemEnableMinimize}"
+                                   ToggleType="CheckBox"
+                                   IsChecked="True"
+                                   Tag="{x:Static workspaceviews:WindowMenuItemKind.Minimize}" />
+                    <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemEnableMaximize}"
+                                   ToggleType="CheckBox"
+                                   IsChecked="True"
+                                   Tag="{x:Static workspaceviews:WindowMenuItemKind.Maximize}" />
+                    <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemEnableMove}"
+                                   ToggleType="CheckBox"
+                                   IsChecked="True"
+                                   Tag="{x:Static workspaceviews:WindowMenuItemKind.Move}" />
+                    <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemEnableResize}"
+                                   ToggleType="CheckBox"
+                                   IsChecked="True"
+                                   Tag="{x:Static workspaceviews:WindowMenuItemKind.Resize}" />
+                </atom:MenuItem>
+            </atom:MenuItem>
+            <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemTheme}">
+                <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemDarkMode}"
+                               ToggleType="CheckBox"
+                               Tag="{x:Static workspaceviews:WindowMenuItemKind.DarkMode}" />
+                <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemCompactMode}"
+                               ToggleType="CheckBox"
+                               Tag="{x:Static workspaceviews:WindowMenuItemKind.Compact}" />
+                <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemEnableMotion}"
+                               ToggleType="CheckBox"
+                               IsChecked="True"
+                               Tag="{x:Static workspaceviews:WindowMenuItemKind.Motion}" />
+                <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemEnableWaveSpirit}"
+                               ToggleType="CheckBox"
+                               IsChecked="True"
+                               Tag="{x:Static workspaceviews:WindowMenuItemKind.WaveSpirit}" />
+            </atom:MenuItem>
+            <atom:MenuItem Header="{gallery:WorkspaceWindowLangResource MenuItemLanguage}">
+                <atom:MenuItem Header="简体中文"
+                               ToggleType="Radio"
+                               IsChecked="{Binding IsZhCN}"
+                               Tag="{x:Static workspaceviews:WindowMenuItemKind.LanguageZhCN}" />
+                <atom:MenuItem Header="繁體中文"
+                               ToggleType="Radio"
+                               IsChecked="{Binding IsZhTW}"
+                               Tag="{x:Static workspaceviews:WindowMenuItemKind.LanguageZhTW}" />
+                <atom:MenuItem Header="English"
+                               ToggleType="Radio"
+                               IsChecked="{Binding IsEnUS}"
+                               Tag="{x:Static workspaceviews:WindowMenuItemKind.LanguageEnUS}" />
+                <atom:MenuItem Header="Português (Brasil)"
+                               ToggleType="Radio"
+                               IsChecked="{Binding IsPtBR}"
+                               Tag="{x:Static workspaceviews:WindowMenuItemKind.LanguagePtBR}" />
+            </atom:MenuItem>
+        </atom:Menu>
+    </atom:Window.Resources>
+    <Grid>
+        <Grid Name="ShellHost" />
+        <Border Height="1"
+                VerticalAlignment="Top"
+                Background="{atom:SharedTokenResource ColorBorderSecondary}"
+                IsHitTestVisible="False" />
+    </Grid>
+</atom:Window>

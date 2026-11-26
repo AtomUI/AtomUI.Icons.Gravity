@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>$(AtomUITargetFrameworks)</TargetFrameworks>
+        <OutputType>WinExe</OutputType>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <ApplicationIcon>Assets/GravityGallery.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <!--        <IsTrimmable>true</IsTrimmable>-->
+        <!--        <PublishTrimmed>true</PublishTrimmed>-->
+        <!--        <PublishAot>true</PublishAot>-->
+        <UseAppHost>true</UseAppHost>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' != ''">
+        <ProjectReference Include="../GravityGallery/GravityGallery.csproj"
+                          SetTargetFramework="TargetFramework=$(TargetFramework)" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == ''">
+        <ProjectReference Include="../GravityGallery/GravityGallery.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia.Desktop" />
+        <PackageReference Include="AtomUI.Generator"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all" />
+        <PackageReference Include="AtomUI.Controls.I18n.PtBR" />
+        <PackageReference Include="AtomUI.Desktop.Controls.I18n.PtBR" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="Assets/GravityGallery.ico">
+            <Link>GravityGallery.ico</Link>
+        </None>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <AvaloniaResource Remove="Assets/GravityGallery.ico" />
+    </ItemGroup>
+</Project>

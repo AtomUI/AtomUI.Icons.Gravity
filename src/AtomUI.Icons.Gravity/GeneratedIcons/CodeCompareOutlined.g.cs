@@ -1,0 +1,37 @@
+// This code is auto generated. Do not modify.
+// Upstream: Gravity UI Icons v2.24.0 (a479b875c217), MIT License, Copyright (c) 2022 YANDEX LLC, https://github.com/gravity-ui/icons
+
+using System.Collections.Generic;
+using Avalonia;
+using Avalonia.Media;
+using AtomUI.Controls;
+namespace AtomUI.Icons.Gravity;
+
+public class CodeCompareOutlined : GravityIcon
+{
+    public CodeCompareOutlined()
+    {
+        IconTheme = IconThemeType.Outlined;
+        ViewBox = new Rect(0, 0, 16, 16);
+    }
+
+    public override Icon CreateInstance()
+    {
+        return new CodeCompareOutlined();
+    }
+
+    internal override Rect GeneratedViewBox => new Rect(0, 0, 16, 16);
+    internal override Rect GeneratedGeometryBounds => new Rect(0.99999344348907471, 1.5002622604370117, 14.000056266784668, 13.002747535705566);
+    internal override Matrix GeneratedZoomMatrix => new Matrix(1.0324519240569601, 0, 0, 1.0324519240569601, -0.25961539245568055, -0.25961539245568055);
+
+    private static readonly DrawingInstruction[] StaticInstructions = [
+        new PathDrawingInstruction()
+        {
+            Opacity = 1,
+            FillBrush = IconBrushType.Fill,
+            Data = StreamGeometry.Parse("F0 M9.22 14.03a.75.75 0 0 0 1.06-1.06l-.47-.47H10a3 3 0 0 0 1.507-.405A3 3 0 0 0 13 9.5V6.896h.003a2.7 2.7 0 0 0 .785-.366 2.75 2.75 0 1 0-2.288.366V9.5A1.5 1.5 0 0 1 10 11h-.19l.47-.47a.75.75 0 0 0-1.06-1.06l-.47.47-1.28 1.28a.75.75 0 0 0 0 1.06zM5.72 1.97a.75.75 0 0 1 1.06 0l.47.47 1.28 1.28a.75.75 0 0 1 0 1.06L6.78 6.53a.751.751 0 0 1-1.06-1.06L6.19 5H6a1.5 1.5 0 0 0-1.5 1.5v2.604a2.76 2.76 0 0 1 2 2.646 2.74 2.74 0 0 1-1.212 2.28l-.094.061A2.747 2.747 0 0 1 1 11.75a2.75 2.75 0 0 1 2-2.646V6.5a3 3 0 0 1 3-3h.19l-.47-.47a.75.75 0 0 1 0-1.06m-.908 9.121A1.25 1.25 0 0 1 5 11.75a1.25 1.25 0 1 1-.188-.659M11 4.25a1.25 1.25 0 1 1 2.5 0 1.25 1.25 0 0 1-2.5 0"),
+        }
+    ];
+
+    protected override IList<DrawingInstruction> DrawingInstructions => StaticInstructions;
+}

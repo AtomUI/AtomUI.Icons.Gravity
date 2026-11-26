@@ -1,0 +1,12 @@
+using AtomUI.Theme.Resources;
+using Avalonia.Markup.Xaml;
+
+namespace GravityGallery.Controls;
+
+internal class GalleryControlThemesProvider : ControlThemesProvider
+{
+    public GalleryControlThemesProvider()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
+}

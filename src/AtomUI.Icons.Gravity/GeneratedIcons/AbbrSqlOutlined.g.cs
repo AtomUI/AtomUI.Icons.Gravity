@@ -1,0 +1,37 @@
+// This code is auto generated. Do not modify.
+// Upstream: Gravity UI Icons v2.24.0 (a479b875c217), MIT License, Copyright (c) 2022 YANDEX LLC, https://github.com/gravity-ui/icons
+
+using System.Collections.Generic;
+using Avalonia;
+using Avalonia.Media;
+using AtomUI.Controls;
+namespace AtomUI.Icons.Gravity;
+
+public class AbbrSqlOutlined : GravityIcon
+{
+    public AbbrSqlOutlined()
+    {
+        IconTheme = IconThemeType.Outlined;
+        ViewBox = new Rect(0, 0, 16, 16);
+    }
+
+    public override Icon CreateInstance()
+    {
+        return new AbbrSqlOutlined();
+    }
+
+    internal override Rect GeneratedViewBox => new Rect(0, 0, 16, 16);
+    internal override Rect GeneratedGeometryBounds => new Rect(0.0045338175259530544, 4, 15.995466232299805, 9.2592267990112305);
+    internal override Matrix GeneratedZoomMatrix => new Matrix(0.85375345741220587, 0, 0, 0.85375345741220587, 1.169972340702353, 1.169972340702353);
+
+    private static readonly DrawingInstruction[] StaticInstructions = [
+        new PathDrawingInstruction()
+        {
+            Opacity = 1,
+            FillBrush = IconBrushType.Fill,
+            Data = StreamGeometry.Parse("F0 M13.5 4.75a.75.75 0 0 0-1.5 0v6.5c0 .414.336.75.75.75h2.5a.75.75 0 0 0 0-1.5H13.5zM11 8c0 1.32-.257 2.314-.709 2.98l.99.99a.75.75 0 1 1-1.061 1.06l-1.132-1.132Q8.753 12 8.375 12C6.8 12 5.75 10.667 5.75 8S6.8 4 8.375 4 11 5.333 11 8m-1.957 2.15c.222-.322.457-.98.457-2.149 0-1.168-.235-1.826-.457-2.149-.175-.254-.366-.35-.668-.35s-.493.096-.668.35c-.222.323-.457.981-.457 2.15 0 1.167.235 1.826.457 2.148.175.254.366.351.668.351s.493-.097.668-.351M2.562 4.002c-.689 0-1.285.249-1.702.713C.453 5.17.277 5.76.277 6.352c0 .732.326 1.28.759 1.658.41.358.908.561 1.305.684.398.122.684.217.89.372.147.113.27.266.27.625 0 .29-.109.468-.253.589a1.08 1.08 0 0 1-.686.222c-.202 0-.438-.093-.658-.293a1.4 1.4 0 0 1-.423-.684.75.75 0 0 0-1.462.333c.127.557.453 1.079.878 1.463.426.386 1.006.681 1.665.681.578 0 1.177-.18 1.647-.57.485-.405.791-1.006.791-1.74 0-.843-.352-1.433-.864-1.821-.434-.329-.962-.49-1.306-.596l-.047-.015c-.31-.095-.579-.221-.76-.38a.65.65 0 0 1-.246-.528c0-.304.09-.512.2-.635.099-.11.27-.215.585-.215.322 0 .498.099.612.206.13.123.233.313.3.56a.75.75 0 0 0 1.449-.386c-.113-.42-.325-.892-.719-1.263-.409-.387-.961-.617-1.642-.617"),
+        }
+    ];
+
+    protected override IList<DrawingInstruction> DrawingInstructions => StaticInstructions;
+}

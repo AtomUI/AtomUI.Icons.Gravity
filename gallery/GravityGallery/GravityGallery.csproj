@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>$(AtomUITargetFrameworks)</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>GeneratedFiles</CompilerGeneratedFilesOutputPath>
+        <AtomUILanguageContractVersion>2</AtomUILanguageContractVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="Assets/**/*.*"
+                          Exclude="Assets/atomui-gravity-icons-banner.png"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="AvaloniaUI.DiagnosticsSupport"/>
+        <PackageReference Include="AtomUI.Desktop.Controls"/>
+        <PackageReference Include="AtomUI.Icons.AntDesign"/>
+        <PackageReference Include="AtomUI.Toolkits.GalleryBase"/>
+        <PackageReference Include="AtomUI.Generator"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <AssemblyMetadata Include="GravityVersion" Value="$(GravityVersion)" />
+        <InternalsVisibleTo Include="GravityGallery.Tests" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(UsePublishedGravityPackage)' != 'true' and '$(TargetFramework)' != ''">
+        <ProjectReference Include="../../src/AtomUI.Icons.Gravity/AtomUI.Icons.Gravity.csproj"
+                          SetTargetFramework="TargetFramework=$(TargetFramework)"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(UsePublishedGravityPackage)' != 'true' and '$(TargetFramework)' == ''">
+        <ProjectReference Include="../../src/AtomUI.Icons.Gravity/AtomUI.Icons.Gravity.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(UsePublishedGravityPackage)' == 'true'">
+        <PackageReference Include="AtomUI.Icons.Gravity"/>
+    </ItemGroup>
+    
+</Project>
