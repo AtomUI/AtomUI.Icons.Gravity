@@ -31,7 +31,7 @@ class ReleaseWorkflowTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
-        self.directory = Path(self.temporary.name)
+        self.directory = Path(self.temporary.name).resolve()
         packages = self.directory / "gravity-nuget"
         packages.mkdir()
         self.package = packages / "AtomUI.Icons.Gravity.6.3.0.nupkg"
@@ -95,10 +95,13 @@ try { & {
         result, audit = self.run_publish_step()
         self.assertEqual(0, result.returncode, result.stdout + result.stderr)
         self.assertEqual(1, audit["push_count"])
+        push_args = list(audit["push_args"])
+        self.assertEqual(self.package.resolve(), Path(push_args[2]).resolve())
+        push_args[2] = str(self.package.resolve())
         self.assertEqual([
-            "nuget", "push", str(self.package), "--api-key", "test-only-key",
+            "nuget", "push", str(self.package.resolve()), "--api-key", "test-only-key",
             "--source", "https://api.nuget.org/v3/index.json",
-        ], audit["push_args"])
+        ], push_args)
         self.assertEqual(0, audit["requests"])
         self.assertEqual(0, audit["sleeps"])
 
